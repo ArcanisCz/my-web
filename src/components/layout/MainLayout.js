@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import {Pokus} from "./Pokus";
+import Helmet from "react-helmet";
 
 export const MainLayout = ({ children }) => (
   <StaticQuery
@@ -17,6 +18,9 @@ export const MainLayout = ({ children }) => (
     `}
     render={data => (
       <>
+          <Helmet>
+              <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+          </Helmet>
           <Pokus />
           {children}
       </>
