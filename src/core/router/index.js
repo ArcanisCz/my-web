@@ -2,11 +2,11 @@
 
 import {NAME} from './constants';
 import reducer from "./reducer";
-import CustomRoute from "./CustomRoute";
+// import CustomRoute from "./CustomRoute";
 
 // import history from "./history";
 // import createRouterSaga from "./createRouterSaga";
-// import Routes from "./Routes";
+import createRoutes from "./createRoutes";
 // import saga from "./saga";
 // import {transition, transitionRoute, goBack} from "./actions";
 // import {getRegisteredRoutes, registerRoutes, getStaticUrl} from "./staticRouteRegister";
@@ -24,7 +24,8 @@ const router = {
     // Routes,
     // saga,
     reducer,
-    CustomRoute,
+    // CustomRoute,
+    createRoutes,
     // transition,
     // goBack,
     // transitionRoute,

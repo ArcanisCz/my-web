@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {routeEntered, routeLeft} from './actions';
 // import ScrollToTop from "./ScrollToTop";
 
-export default (WrappedComponent) => {
+export default ({name}) => (WrappedComponent) => {
     const InnerWrappedComponent = memo(WrappedComponent);
 
     const CustomRoute = class extends Component {
@@ -18,7 +18,7 @@ export default (WrappedComponent) => {
 
         componentDidMount() {
             // console.log("mount",this.props.name);
-            this.props.onEnter(this.props.name);
+            this.props.onEnter(name);
         }
 
         // componentWillMount() {
@@ -32,7 +32,7 @@ export default (WrappedComponent) => {
 
         componentWillUnmount() {
             // console.log("unmount",this.props.name);
-            this.props.onLeave(this.props.name);
+            this.props.onLeave(name);
         }
 
         // componentWillReceiveProps({name, match, query}) {
@@ -44,14 +44,14 @@ export default (WrappedComponent) => {
 
         render() {
             return (
-                <InnerWrappedComponent {...this.props.routeProps} />
+                <InnerWrappedComponent {...this.props} />
             );
         }
     };
 
     CustomRoute.propTypes = {
         onEnter: PropTypes.func.isRequired,
-        name: PropTypes.string.isRequired,
+        // name: PropTypes.string.isRequired,
         // match: PropTypes.shape({
         //     params: PropTypes.object.isRequired,
         //     url: PropTypes.string.isRequired,
