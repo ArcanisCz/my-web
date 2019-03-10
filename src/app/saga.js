@@ -1,22 +1,19 @@
-import {call, delay} from "redux-saga/effects";
+import {call} from "redux-saga/effects";
 
 import router from "core/router";
+
+import page2saga from "./page2/saga";
+
 import routes from "./routes";
 
-// import page2saga from "./page2/saga";
+export default router.createRouterSaga(routes, blockingSaga, nonBlockingSaga, [page2saga]);
 
-export default router.createRouterSaga(routes, routeSaga);
-
-function* pageSaga() {
-    yield call(console.log, "app", "pageSaga");
-
+function* blockingSaga(name) {
+    yield call(console.log, "app", "blocking", name);
+    // yield delay(3000);
 }
 
-function* routeSaga({name}) {
-    yield call(console.log, "app", "routeSaga", name);
-    switch (name) {
-        case "page2":
-            // yield call(page2saga)
-    }
-
+function* nonBlockingSaga(name) {
+    // yield delay(3000);
+    yield call(console.log, "app", "nonblocking", name);
 }

@@ -1,6 +1,9 @@
-import {ROUTE_ENTERED} from "./actions";
+import {ROUTE_LEFT} from "./actions";
 
 /**
  * @param {String[]} routesList
  */
-export default (routesList) => ({type, name}) => (type === ROUTE_ENTERED && routesList.includes(name));
+export default (routesList) => ({type, name}) => {
+    // console.log(routesList, type, name);
+    return (type === ROUTE_LEFT && routesList.includes(name))
+};

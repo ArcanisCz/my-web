@@ -1,27 +1,31 @@
-import {call, actionChannel, take, fork, cancel, all, takeEvery} from 'redux-saga/effects';
+import {call, fork, all, takeEvery} from 'redux-saga/effects';
 
 import createRouteMatcher from "./createRouteMatcher";
 
-export default (routes, pageSaga, routeSaga) => function* routerSaga(...params) {
-    // console.log(routes);
-    const requestChan = yield actionChannel(createRouteMatcher(Object.keys(routes)));
-
-    try {
-        // start both sagas simultaneously, but wait only for the blocking one
-        yield call(pageSaga);
-
-        // custom takeLatest, because usage of takeLatest throwed actionChannel buffer overflow error after 10 page routes
-        let lastTask;
-        while (true) {
-            const action = yield take(requestChan);
-            if (lastTask) {
-                yield cancel(lastTask);
-            }
-            lastTask = yield fork(routeSaga, action, ...params);
+export default (routes, blockingSaga, nonBlockingSaga, childrenRouteSagas = []) => function* routerSaga(name, others) {
+    const routeNames = Object.keys(routes);
+    if(routeNames.includes(name)){
+        const process = yield fork(callAaa, blockingSaga, nonBlockingSaga, name, others, childrenRouteSagas);
+        yield takeEvery(createRouteMatcher(routeNames), cancelProcess, process);
+    } else {
+        for(let childSaga of childrenRouteSagas){
+            yield call(childSaga, name, others);
         }
-    } finally {
-        // this is actually pretty well reachable code due to task canncellation
-        // https://redux-saga.js.org/docs/advanced/TaskCancellation.html
-        requestChan.close();
     }
 };
+
+function* callAaa(blockingSaga, nonBlockingSaga, name, others, childrenRouteSagas) {
+    yield all([
+        call(blockingSaga, name),
+        fork(nonBlockingSaga, name),
+    ]);
+
+    const [childName, ...childOthers] = others;
+    for(let childSaga of childrenRouteSagas){
+        yield call(childSaga, childName, childOthers);
+    }
+}
+
+function cancelProcess(process) {
+    process.cancel();
+}
