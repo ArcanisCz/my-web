@@ -7,6 +7,8 @@ import reducer from "./reducer";
 // import history from "./history";
 // import createRouterSaga from "./createRouterSaga";
 import createRoutes from "./createRoutes";
+import {createLink} from "./links";
+import RoutesContext from "./RoutesContext";
 // import saga from "./saga";
 // import {transition, transitionRoute, goBack} from "./actions";
 // import {getRegisteredRoutes, registerRoutes, getStaticUrl} from "./staticRouteRegister";
@@ -26,6 +28,8 @@ const router = {
     reducer,
     // CustomRoute,
     createRoutes,
+    createLink,
+    RoutesContextConsumer: RoutesContext.Consumer,
     // transition,
     // goBack,
     // transitionRoute,

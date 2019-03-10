@@ -17,8 +17,7 @@ export const wrapRootElement = ({element}) => {
     )
 };
 
-// export const onPreRouteUpdate = ({location, prevLocation, ...aaa}) => {
-//     console.log(aaa);
+// export const onPreRouteUpdate = ({location, prevLocation}) => {
 //     console.log("onPreRouteUpdate","from", prevLocation ? prevLocation.pathname : null, "to", location.pathname)
 // };
 //

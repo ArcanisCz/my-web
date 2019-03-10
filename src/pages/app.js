@@ -3,28 +3,19 @@ import {Link} from "gatsby";
 
 import {MainLayout} from "../components"
 
-import Page1 from "../app/Page1";
-import Page2 from "../app/Page2";
+import routes from "./routes";
 
 import router from "../core/router";
 
-const Routes = router.createRoutes([{
-    name: "page1",
-    component: Page1,
-    path: "/app"
-},{
-    name: "page2",
-    component: Page2,
-    path: "/app/page2/*"
-}]);
+const Routes = router.createRoutes(routes);
 
 const AppPage = () => (
     <MainLayout>
         {/*{console.log("App")}*/}
         App
         <ul>
-            <li><Link to="/" >Index</Link></li>
-            <li><Link to="/app/page2" >Page2</Link></li>
+            <li><Link to={router.createLink([routes.page1])} >Page 1</Link></li>
+            <li><Link to={router.createLink([routes.page2])} >Page 2</Link></li>
         </ul>
         <Routes />
     </MainLayout>

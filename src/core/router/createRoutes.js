@@ -4,18 +4,36 @@ import {Router} from "@reach/router";
 // import IPropTypes from "react-immutable-proptypes";
 
 import CustomRoute from "./CustomRoute";
+import RoutesContext from "./RoutesContext";
+
+function createRoutes(routes) {
+    return Object.values(routes).map(({component, path, childRoutes}) => {
+        if (childRoutes) {
+            return {Component: CustomRoute(component), path, childRoutes: createRoutes(childRoutes)};
+        } else {
+            return {Component: CustomRoute(component), path};
+        }
+    });
+}
+
+function renderRoutes(routesComponents) {
+    if(!routesComponents){
+        return null;
+    }
+    return routesComponents.map(({path, Component, childRoutes}) => {
+        return <Component path={path} key={path} children={renderRoutes(childRoutes)} />
+    });
+}
 
 export default (routes) => {
-    const routesComponents = routes.map(({name, component}) => {
-       return CustomRoute({name})(component);
-    });
+    const routesComponents = createRoutes(routes);
 
     return () => (
-        <Router>
-            {routesComponents.map((Route, index) => {
-                return <Route path={routes[index].path} key={routes[index].path} />
-            })}
-        </Router>
+        <RoutesContext.Provider value={routes}>
+            <Router>
+                {renderRoutes(routesComponents)}
+            </Router>
+        </RoutesContext.Provider>
     );
 };
 

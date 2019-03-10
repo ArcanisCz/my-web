@@ -1,31 +1,23 @@
 import React from "react"
 import {Link} from "gatsby";
 
-import Tab1 from "./Tab1";
-import Tab2 from "./Tab2";
-
 import router from "../core/router";
 
-const Routes = router.createRoutes([{
-    name: "tab1",
-    component: Tab1,
-    path: "/"
-},{
-    name: "tab2",
-    component: Tab2,
-    path: "/tab2"
-}]);
+// import routes from "../pages/routes";
 
-const Page2 = () => (
+const Page2 = ({children}) => (
     <div>
-        {/*{console.log("Page 2")}*/}
         Page 2
-        <ul>
-            <li><Link to="/app/page2/">Tab1</Link></li>
-            <li><Link to="/app/page2/tab2" >Tab2</Link></li>
-        </ul>
+        <router.RoutesContextConsumer>
+            {routes => (
+                <ul>
+                    <li><Link to={router.createLink([routes.page2, routes.page2.childRoutes.tab1])}>Tab1</Link></li>
+                    <li><Link to={router.createLink([routes.page2, routes.page2.childRoutes.tab2])}>Tab2</Link></li>
+                </ul>
+            )}
+        </router.RoutesContextConsumer>
         <div>
-            <Routes />
+            {children}
         </div>
     </div>
 );
