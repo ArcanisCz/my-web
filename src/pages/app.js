@@ -3,9 +3,9 @@ import {Link} from "gatsby";
 
 import {MainLayout} from "../components"
 
-import routes from "./routes";
+import routes from "../app/routes";
 
-import router from "../core/router";
+import router from "core/router";
 
 const Routes = router.createRoutes(routes);
 

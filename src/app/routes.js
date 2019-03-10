@@ -1,13 +1,16 @@
-import Tab1 from "./Tab1";
-import Tab2 from "./Tab2";
+import Page1 from "./page1/Page1";
+import Page2 from "./page2/Page2";
+
+import page2Tabs from "./page2/routes";
 
 export default {
-    tab1: {
-        component: Tab1,
-        path: "/"
+    page1: {
+        component: Page1,
+        path: "/app"
     },
-    tab2: {
-        component: Tab2,
-        path: "/tab2"
+    page2: {
+        component: Page2,
+        path: "/app/page2",
+        childRoutes: page2Tabs,
     }
-}
+};

@@ -28,11 +28,11 @@ exports.onCreateWebpackConfig = ({stage, getConfig, actions}) => {
         resolve: {
             modules: ["src", "node_modules"]
         },
-        plugins: [
-            new CircularDependencyPlugin({
-                exclude: /\.cache|node_modules/,
-                failOnError: true,
-            })
-        ]
+        // plugins: [
+        //     new CircularDependencyPlugin({
+        //         exclude: /(\.cache)|(node_modules)/,
+        //         failOnError: false,
+        //     })
+        // ]
     })
 };

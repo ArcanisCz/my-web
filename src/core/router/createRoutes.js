@@ -7,11 +7,12 @@ import CustomRoute from "./CustomRoute";
 import RoutesContext from "./RoutesContext";
 
 function createRoutes(routes) {
-    return Object.values(routes).map(({component, path, childRoutes}) => {
+    return Object.keys(routes).map((name) => {
+        const {component, path, childRoutes} = routes[name];
         if (childRoutes) {
-            return {Component: CustomRoute(component), path, childRoutes: createRoutes(childRoutes)};
+            return {Component: CustomRoute({name})(component), path, childRoutes: createRoutes(childRoutes)};
         } else {
-            return {Component: CustomRoute(component), path};
+            return {Component: CustomRoute({name})(component), path};
         }
     });
 }

@@ -5,7 +5,7 @@ import reducer from "./reducer";
 // import CustomRoute from "./CustomRoute";
 
 // import history from "./history";
-// import createRouterSaga from "./createRouterSaga";
+import createRouterSaga from "./createRouterSaga";
 import createRoutes from "./createRoutes";
 import {createLink} from "./links";
 import RoutesContext from "./RoutesContext";
@@ -21,7 +21,7 @@ const router = {
     NAME,
     // BACK_PARAM,
     // history,
-    // createRouterSaga,
+    createRouterSaga,
     // Router,
     // Routes,
     // saga,

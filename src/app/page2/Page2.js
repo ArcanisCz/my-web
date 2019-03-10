@@ -1,7 +1,7 @@
 import React from "react"
 import {Link} from "gatsby";
 
-import router from "../core/router";
+import router from "core/router";
 
 // import routes from "../pages/routes";
 

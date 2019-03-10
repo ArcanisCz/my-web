@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {routeEntered, routeLeft} from './actions';
 // import ScrollToTop from "./ScrollToTop";
 
-export default (WrappedComponent) => {
+export default ({name}) => (WrappedComponent) => {
     const InnerWrappedComponent = memo(WrappedComponent);
 
     const CustomRoute = class extends Component {
@@ -16,15 +16,15 @@ export default (WrappedComponent) => {
         // }
 
 
-        componentDidMount() {
-            // console.log("mount",this.props.name);
-            this.props.onEnter(this.props.uri);
-        }
-
-        // componentWillMount() {
-        //     console.log("willmount",this.props.name);
-        //     this.props.onEnter(this.props.name, {}, {});
+        // componentDidMount() {
+        //     // console.log("mount",this.props.name);
+        //     this.props.onEnter(name);
         // }
+
+        componentWillMount() {
+            // console.log("mount",this.props.name);
+            this.props.onEnter(name);
+        }
 
         // componentDidUpdate(prevProps, prevState, snapshot) {
         //     console.log("update",this.props.name);
@@ -32,7 +32,7 @@ export default (WrappedComponent) => {
 
         componentWillUnmount() {
             // console.log("unmount",this.props.name);
-            this.props.onLeave(this.props.uri);
+            this.props.onLeave(name);
         }
 
         // componentWillReceiveProps({name, match, query}) {
