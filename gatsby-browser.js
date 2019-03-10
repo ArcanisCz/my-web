@@ -1,7 +1,28 @@
 /**
- * Implement Gatsby's Browser APIs in this file.
+ * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
  *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
+ * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
+import React from "react";
+import createProvider from "./src/createProvider";
+import reducer from "./src/reducer";
+import saga from "./src/saga";
 
-// You can delete this file if you're not using it
+export const wrapRootElement = ({element}) => {
+    const Root = createProvider(reducer, saga);
+    return (
+        <Root>
+            {element}
+        </Root>
+    )
+};
+
+// export const onPreRouteUpdate = ({location, prevLocation, ...aaa}) => {
+//     console.log(aaa);
+//     console.log("onPreRouteUpdate","from", prevLocation ? prevLocation.pathname : null, "to", location.pathname)
+// };
+//
+// export const onRouteUpdate = ({ location, prevLocation, ...aaa}) => {
+//     console.log(aaa);
+//     console.log("onRouteUpdate","from", prevLocation ? prevLocation.pathname : null, "to", location.pathname)
+// };

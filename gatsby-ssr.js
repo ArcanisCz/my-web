@@ -3,5 +3,15 @@
  *
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
+import React from "react";
+import createProvider from "./src/createProvider";
+import reducer from "./src/reducer";
 
-// You can delete this file if you're not using it
+export const wrapRootElement = ({element}) => {
+    const Root = createProvider(reducer);
+    return (
+        <Root>
+            {element}
+        </Root>
+    )
+};

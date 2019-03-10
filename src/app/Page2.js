@@ -5,7 +5,10 @@ import {Link} from "gatsby";
 import Tab1 from "./Tab1";
 import Tab2 from "./Tab2";
 
-import debug from "../debug";
+import router from "../core/router";
+
+const Tab1Route = router.CustomRoute(Tab1);
+const Tab2Route = router.CustomRoute(Tab2);
 
 const Page2 = () => (
     <div>
@@ -17,12 +20,12 @@ const Page2 = () => (
         </ul>
         <div>
             <Router>
-                <Tab1 path="/" />
-                <Tab2 path="/tab2" />
+                <Tab1Route path="/" name="tab1" />
+                <Tab2Route path="/tab2" name="tab2" />
             </Router>
         </div>
     </div>
 );
 
-export default debug()(Page2);
+export default Page2;
 

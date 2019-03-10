@@ -33,9 +33,6 @@ const debug = ({name, mount, unmount, update} = {}) => (Component) => {
     const InnerComponent = memo(Component);
 
     return class extends React.Component {
-        // componentWillMount() {
-        //     logIfExists(onMount(this.props));
-        // }
 
         componentDidMount() {
             logIfExists(onMount(this.props));
