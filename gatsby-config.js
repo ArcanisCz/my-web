@@ -1,27 +1,8 @@
 const siteMetadata = {
-    title: `Lucie Jílková`,
+    title: `Arcanis`,
     description: ``,
-    author: `Lucie Jílková`,
-    siteUrl: `https://lucka.arcanis.cz`,
-    links: [{
-        href: "/",
-        title: "Novinky"
-    }, {
-        href: "/about",
-        title: "O Nás"
-    }, {
-        href: "/gallery",
-        title: "Galerie"
-    }, {
-        href: "/services",
-        title: "Služby"
-    }, {
-        href: "/media",
-        title: "Média"
-    }, {
-        href: "/contact",
-        title: "Kontakt"
-    }]
+    author: `Arcanis`,
+    siteUrl: ``,
 };
 
 const build = [

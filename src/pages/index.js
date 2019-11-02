@@ -1,8 +1,9 @@
-import React from "react"
-import {graphql} from "gatsby"
+import React from "react";
+import {graphql} from "gatsby";
 
 import Seo from "../components/Seo";
 
+/* eslint-disable */
 export default ({data}) => (
     <>
         <Seo title="" />

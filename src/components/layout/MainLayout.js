@@ -1,5 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 
 import Logo from "./Logo";
 
@@ -24,4 +24,7 @@ export const MainLayout = ({children, location}) => (
 
 MainLayout.propTypes = {
     children: PropTypes.node.isRequired,
+    location: PropTypes.shape({
+        pathname: PropTypes.string,
+    }).isRequired,
 };

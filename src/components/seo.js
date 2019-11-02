@@ -1,7 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import {graphql, useStaticQuery} from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import {graphql, useStaticQuery} from "gatsby";
 
 function Seo({description, lang, meta, keywords, title}) {
     const data = useStaticQuery(detailsQuery);
@@ -42,7 +42,7 @@ function Seo({description, lang, meta, keywords, title}) {
                 .concat(meta)
             }
         />
-    )
+    );
 }
 
 Seo.defaultProps = {
@@ -59,7 +59,11 @@ Seo.propTypes = {
     title: PropTypes.string.isRequired,
 };
 
-export default Seo
+Seo.defaultProps = {
+    description: "",
+};
+
+export default Seo;
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
