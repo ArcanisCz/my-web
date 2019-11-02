@@ -24,8 +24,8 @@ exports.onCreateWebpackConfig = ({actions, plugins}) => {
                 'BUILD.DATE': new Date().getTime(),
             }),
         ],
-        resolve: {
-            modules: ["src", "node_modules"],
-        },
+        // resolve: {
+            // modules: ["src", "node_modules"],
+        // },
     });
 };
