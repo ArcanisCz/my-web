@@ -1,7 +1,7 @@
 import React from "react";
 import {graphql} from "gatsby";
 
-import Seo from "../components/Seo";
+import {Seo} from "components";
 
 /* eslint-disable */
 export default ({data}) => (
