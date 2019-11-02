@@ -23,11 +23,11 @@ const features = [
     `gatsby-plugin-react-helmet`,
     // `gatsby-plugin-catch-links`,
     {
-        resolve: `gatsby-plugin-prefetch-google-fonts`,
+        resolve: 'gatsby-plugin-web-font-loader',
         options: {
-            fonts: [{
-                family: `Open Sans`,
-            }],
+            google: {
+                families: ['Open Sans'],
+            },
         },
     },
 ];
