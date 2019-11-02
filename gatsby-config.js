@@ -6,16 +6,15 @@ const siteMetadata = {
 };
 
 const build = [
-    // `gatsby-plugin-netlify`,
-    // `gatsby-plugin-netlify-cache`,
-    // `gatsby-plugin-sitemap`,
-    // 'gatsby-plugin-robots-txt',
+    `gatsby-plugin-netlify`,
+    `gatsby-plugin-netlify-cache`,
+    `gatsby-plugin-sitemap`,
+    'gatsby-plugin-robots-txt',
     'gatsby-plugin-no-sourcemaps',
     {
         resolve: `gatsby-plugin-sass`,
         options: {
             implementation: require("sass"),
-            includePaths: [`${__dirname}/src/theme/`],
         },
     },
 ];
@@ -23,21 +22,12 @@ const build = [
 const features = [
     `gatsby-plugin-react-helmet`,
     // `gatsby-plugin-catch-links`,
-    // {
-    //     resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //     options: {
-    //         fonts: [{
-    //             family: `Open Sans`,
-    //             variants: [`300`, `400`, `700`]
-    //         }],
-    //     },
-    // }
     {
-        resolve: 'gatsby-plugin-web-font-loader',
+        resolve: `gatsby-plugin-prefetch-google-fonts`,
         options: {
-            google: {
-                families: ['Open Sans']
-            },
+            fonts: [{
+                family: `Open Sans`,
+            }],
         },
     },
 ];

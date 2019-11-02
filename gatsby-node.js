@@ -1,11 +1,19 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
 const CircularDependencyPlugin = require("circular-dependency-plugin");
+const GitRevisionPlugin = require('git-revision-webpack-plugin');
 
-exports.onCreateWebpackConfig = ({actions, plugins}) => {
+exports.onCreateWebpackConfig = ({actions, plugins, stage}) => {
+    const gitRevisionPlugin = new GitRevisionPlugin();
+
+    if (stage.startsWith("develop")) {
+        actions.setWebpackConfig({
+            resolve: {
+                alias: {
+                    "react-dom": "@hot-loader/react-dom",
+                },
+            },
+        });
+    }
+
     actions.setWebpackConfig({
         plugins: [
             new CircularDependencyPlugin({
@@ -22,6 +30,7 @@ exports.onCreateWebpackConfig = ({actions, plugins}) => {
             plugins.define({
                 "process.env.AXA_SITE": JSON.stringify(process.env.AXA_SITE),
                 'BUILD.DATE': new Date().getTime(),
+                'BUILD.HASH': JSON.stringify(gitRevisionPlugin.commithash()),
             }),
         ],
         resolve: {

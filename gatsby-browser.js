@@ -1,22 +1,19 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
-
-// You can delete this file if you're not using it
 import React from "react";
+import {DateTime} from "luxon";
+
 import {MainLayout} from "./src/components/layout/MainLayout";
 
 export const onClientEntry = () => {
-    // eslint-disable-next-line no-undef
-    const date = new Date(BUILD.DATE);
-    // eslint-disable-next-line no-console
-    console.log(`build date: %c${date.toISOString()}`, "font-weight: bold", "font-weight: normal");
+    /* eslint-disable no-undef,no-console */
+    const date = DateTime.fromMillis(BUILD.DATE);
+    const hash = BUILD.HASH;
+    console.log(`build date: %c${date.toFormat("f")}`, "font-weight: bold");
+    console.log(`commit hash: %c${hash}`, "font-weight: bold");
 };
 
 // eslint-disable-next-line react/prop-types
 export const wrapPageElement = ({element, props}) => (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <MainLayout {...props}>
         {element}
     </MainLayout>
