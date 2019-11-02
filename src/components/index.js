@@ -1,1 +1,1 @@
-export {MainLayout} from "./layout";
+export {default as Seo} from "./Seo";

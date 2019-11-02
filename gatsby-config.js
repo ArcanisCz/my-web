@@ -1,34 +1,104 @@
-module.exports = {
-  siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-  },
-  plugins: [
-    `gatsby-plugin-react-helmet`,
+const siteMetadata = {
+    title: `Lucie Jílková`,
+    description: ``,
+    author: `Lucie Jílková`,
+    siteUrl: `https://lucka.arcanis.cz`,
+    links: [{
+        href: "/",
+        title: "Novinky"
+    }, {
+        href: "/about",
+        title: "O Nás"
+    }, {
+        href: "/gallery",
+        title: "Galerie"
+    }, {
+        href: "/services",
+        title: "Služby"
+    }, {
+        href: "/media",
+        title: "Média"
+    }, {
+        href: "/contact",
+        title: "Kontakt"
+    }]
+};
+
+const build = [
+    // `gatsby-plugin-netlify`,
+    // `gatsby-plugin-netlify-cache`,
+    // `gatsby-plugin-sitemap`,
+    // 'gatsby-plugin-robots-txt',
+    'gatsby-plugin-no-sourcemaps',
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        resolve: `gatsby-plugin-sass`,
+        options: {
+            implementation: require("sass"),
+            includePaths: [`${__dirname}/src/theme/`],
+        },
     },
+];
+
+const features = [
+    `gatsby-plugin-react-helmet`,
+    // `gatsby-plugin-catch-links`,
+    // {
+    //     resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //     options: {
+    //         fonts: [{
+    //             family: `Open Sans`,
+    //             variants: [`300`, `400`, `700`]
+    //         }],
+    //     },
+    // }
+    {
+        resolve: 'gatsby-plugin-web-font-loader',
+        options: {
+            google: {
+                families: ['Open Sans']
+            }
+        }
+    }
+];
+
+const graphql = [
+    // {
+    //     resolve: `gatsby-source-filesystem`,
+    //     options: {
+    //         name: `images`,
+    //         path: `${__dirname}/src/images`,
+    //     },
+    // },
+    {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+            name: "data",
+            path: `${__dirname}/data`,
+        },
+    },
+    {
+        resolve: `gatsby-transformer-yaml-plus`,
+        options: {
+            enableRemark: true,
+        }
+    },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
-  ],
-}
+];
+
+module.exports = {
+    siteMetadata,
+    plugins: [
+        ...build,
+        ...features,
+        ...graphql,
+        // {
+        //     resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+        //     options: {
+        //         production: true,
+        //     },
+        // },
+    ],
+};
+

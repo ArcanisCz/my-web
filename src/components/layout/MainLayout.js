@@ -1,33 +1,27 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
 
-import {Pokus} from "./Pokus";
-import Helmet from "react-helmet";
+import Logo from "./Logo";
 
-export const MainLayout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
-      <>
-          <Helmet>
-              <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-          </Helmet>
-          <Pokus />
-          {children}
-      </>
-    )}
-  />
+import "./global.scss";
+import css from "./MainLayout.module.scss";
+
+export const MainLayout = ({children, location}) => (
+    <div className={css.container}>
+        <div className={css.top}>
+            <div className={css.logo}>
+                <Logo current={location.pathname} />
+            </div>
+            <div className={css.menu}>
+                menu
+            </div>
+        </div>
+        <div className={css.content}>
+            {children}
+        </div>
+    </div>
 );
 
 MainLayout.propTypes = {
-  children: PropTypes.node.isRequired,
+    children: PropTypes.node.isRequired,
 };

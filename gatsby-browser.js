@@ -5,3 +5,11 @@
  */
 
 // You can delete this file if you're not using it
+import React from "react"
+import {MainLayout} from "./src/components/layout/MainLayout";
+
+export const wrapPageElement = ({element, props}) => (
+    <MainLayout {...props}>
+        {element}
+    </MainLayout>
+);

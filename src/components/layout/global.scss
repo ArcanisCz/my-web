@@ -1,0 +1,22 @@
+@import "theme";
+
+html, body {
+    margin: 0;
+    background: $color-background;
+    color: $color-font;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    line-height: 1.7em;
+}
+
+html, body, #___gatsby, #___gatsby > div {
+    height: 100%;
+}
+
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+a, a:active, a:visited {
+    text-decoration: none;
+}

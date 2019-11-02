@@ -1,19 +1,26 @@
 import React from "react"
+import {graphql} from "gatsby"
 
-import {MainLayout} from "../components"
+import Seo from "../components/Seo";
 
-const IndexPage = () => (
-    <MainLayout>
-        aaaa sfs dfsdfsdfsf sdf
-        sdf
-        sdf
-        sdf
-        sd
-        fsd
-        f
-        <b>Kůň jede</b>
-    </MainLayout>
+export default ({data}) => (
+    <>
+        <Seo title="" />
+        {console.log(data)}
+    </>
 );
 
-export default IndexPage
-
+export const query = graphql`
+query {
+  news: allNewsYaml(sort: {fields: [date], order: ASC}) {
+    edges {
+      node {
+        id
+        title
+        date
+        content
+      }
+    }
+  }  
+}
+`;
