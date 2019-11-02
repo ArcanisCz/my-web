@@ -2,7 +2,7 @@ const siteMetadata = {
     title: `Arcanis`,
     description: ``,
     author: `Arcanis`,
-    siteUrl: ``,
+    siteUrl: `https://pokus.arcanis.cz`,
 };
 
 const build = [
@@ -37,9 +37,9 @@ const features = [
         options: {
             google: {
                 families: ['Open Sans']
-            }
-        }
-    }
+            },
+        },
+    },
 ];
 
 const graphql = [
@@ -61,7 +61,7 @@ const graphql = [
         resolve: `gatsby-transformer-yaml-plus`,
         options: {
             enableRemark: true,
-        }
+        },
     },
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
@@ -82,4 +82,3 @@ module.exports = {
         // },
     ],
 };
-
