@@ -1,6 +1,6 @@
 const siteMetadata = {
     title: `Arcanis`,
-    description: ``,
+    description: `aaaaaa`,
     author: `Arcanis`,
     siteUrl: `https://pokus.arcanis.cz`,
 };

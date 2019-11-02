@@ -1,10 +1,10 @@
 import React from "react";
 
-// import {Seo} from "../components";
+import {Seo} from "../components";
 
 export default () => (
     <>
-        {/*<Seo title="" />*/}
+        <Seo title="" />
         aaaaaaa
     </>
 );
