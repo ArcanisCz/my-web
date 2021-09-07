@@ -48,7 +48,7 @@
     "gatsby-transformer-sharp": "2.3.2",
     "gatsby-transformer-yaml-plus": "0.2.2",
     "git-revision-webpack-plugin": "3.0.4",
-    "remark-html": "10.0.0",
+    "remark-html": "13.0.2",
     "rimraf": "3.0.0",
     "sass": "1.23.3"
   },
