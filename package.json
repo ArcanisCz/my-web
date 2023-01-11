@@ -44,7 +44,7 @@
     "gatsby-plugin-web-font-loader": "1.0.4",
     "gatsby-plugin-webpack-bundle-analyzer": "1.0.5",
     "gatsby-source-filesystem": "2.1.35",
-    "gatsby-transformer-remark": "2.6.32",
+    "gatsby-transformer-remark": "5.25.1",
     "gatsby-transformer-sharp": "2.3.2",
     "gatsby-transformer-yaml-plus": "0.2.2",
     "git-revision-webpack-plugin": "3.0.4",
